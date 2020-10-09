@@ -1,0 +1,10 @@
+{
+  "L3_interfaces":
+  {
+    "name": "Management",
+    "subnet": "10.232.212.0/24",
+    "interfaceIp": "10.232.212.1",
+    "multicastRouting": "disabled",
+    "vlanId": 1
+  }
+}
