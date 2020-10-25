@@ -1,16 +1,16 @@
 import pexpect
 
-# Connection to Hynes school
-child= pexpect.spawn('telnet 10.234.40.1')
+
+child= pexpect.spawn('telnet 10.125.40.1')
 
 child.expect('Password')
-child.sendline('#BlessedNOLA')
-child.expect('HYNES_4507>')
+child.sendline('Password')
+child.expect('User_mode_prompt')
 child.sendline('enable')
 child.expect('Password')
-child.sendline('#BlessedNOLA')
+child.sendline('Password')
 
-child.expect('HYNES_4507#')
+child.expect('Enable_prompt')
 child.sendline('show version')
 print(child.before)
 print(child.after)
