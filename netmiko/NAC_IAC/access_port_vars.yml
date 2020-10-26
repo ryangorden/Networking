@@ -1,0 +1,14 @@
+---
+interface:
+  - name: GigabitEthernet3/0/41
+    desc: Kia PORT
+    mode: access
+    vlan: 14
+    voice: 34
+    auth_fail_action: next-method
+    auth_host_mode: multi-auth
+    auth_control: auto
+    auth_violation: restrict
+    switch_auth_role: authenticator
+    dot1x_timeout: 3
+    span_tree: portfast

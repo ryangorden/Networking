@@ -1,0 +1,22 @@
+{% for iface in data.interface %}
+interface {{ iface.name }}
+ description {{ iface.desc }}
+ switchport access vlan {{ iface.vlan }}
+ switchport mode {{ iface.mode }}
+ switchport voice vlan {{ iface.voice }}
+ no authentication event fail action {{ iface.auth_fail_action }}
+ no authentication host-mode {{ iface.auth_host_mode }}
+ no authentication order dot1x mab 
+ no authentication priority dot1x mab
+ no authentication port-control {{ iface.auth_control }}
+ no authentication violation {{ iface.auth_violation }}
+ no authentication event server dead action authorize vlan {{ iface.vlan }}
+ no authentication event server dead action authorize voice
+ no authentication open
+ no authentication periodic
+ no authentication timer reauthenticate server
+ no mab
+ no dot1x pae {{ iface.switch_auth_role }}
+ no dot1x timeout tx-period {{ iface.dot1x_timeout }}
+ spanning-tree {{ iface.span_tree }}
+{% endfor %}
