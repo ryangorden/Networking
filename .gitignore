@@ -1,3 +1,4 @@
 test.txt
-/pexpect/venv
 pexpect/venv
+paramiko/venv
+netmiko/venv
