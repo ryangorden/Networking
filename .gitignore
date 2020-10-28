@@ -3,3 +3,4 @@ pexpect/venv
 paramiko/venv
 netmiko/venv
 nornir/
+*/venv

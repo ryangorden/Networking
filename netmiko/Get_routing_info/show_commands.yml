@@ -1,0 +1,7 @@
+---
+commands:
+  - "show int ip br"
+  - "show route"
+  - "show eigrp ne"
+  - "show run | inc name-server"
+...
