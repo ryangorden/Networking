@@ -19,10 +19,8 @@ def test_bad_get_hosts(file='hosts.txt'):
     validate that the file is a yml file a value is  a list
     '''
 
-    if 'yml' not in file:
-        sys.exit('hosts file need to be in a yaml file')
-    elif 'yaml' not in file:
-        sys.exit('hosts file need to be in a yaml file')
+    if 'yml' or 'yaml' not in file:
+        sys.exit('Invalid file: hosts file not in yaml or does not exist')
     with open(file, 'r') as new_file:
         hosts= safe_load(new_file)
 
