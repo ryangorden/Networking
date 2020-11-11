@@ -1,4 +1,5 @@
-import os
+import json
+import subprocess
 import sys
 from yaml import safe_load
 
@@ -23,10 +24,14 @@ def ping_hosts(hosts_list):
     This function takes a list of host and  check to see
     if they are reachable.
     '''
-
+    output_list =[]
     for host in hosts_list:
-        os.system('ping -c 1 ' + host)
+
+        output=subprocess.check_output(['ping', '-c', '1 ', host])
+        output_list.append(output)
+    return json.dumps(output_list)
 
 if __name__ == '__main__':
     hosts_list= get_host()
-    is_reachanble = ping_hosts(hosts_list)
+    is_reachable = ping_hosts(hosts_list)
+    print(is_reachable)
