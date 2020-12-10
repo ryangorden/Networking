@@ -1,0 +1,5 @@
+---
+"name": "Vlan500"
+"type": "iana-if-type:l3ipvlan"
+"ip": "192.168.1.2"
+"netmask": "255.255.255.0"
