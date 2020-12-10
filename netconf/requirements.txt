@@ -2,3 +2,5 @@ ncclient
 xmltodict
 pyang
 scrapli-netconf
+pyaml
+jinja2
