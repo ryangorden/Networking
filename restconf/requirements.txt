@@ -1,0 +1,8 @@
+jinja2
+requests
+pyaml
+pytest
+pylint
+flask
+pyang
+pprintpp
