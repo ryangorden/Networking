@@ -1,0 +1,6 @@
+---
+"destination_prefix_1": "192.168.1.0/24"
+"hop_1": "GigabitEthernet1"
+"destination_prefix_2": "8.8.8.8/32"
+"hop_2": "10.10.20.254"
+...

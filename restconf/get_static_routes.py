@@ -27,9 +27,4 @@ for routes in data:
         print("\n{:14} {:20}".format(routes['destination-prefix'], routes['next-hop']['next-hop-address']))
 
 
-#print(response['ietf-routing:static-routes']['ietf-ipv4-unicast-routing:ipv4']['route'])
 
-
-
-
-#{'ietf-routing:static-routes': {'ietf-ipv4-unicast-routing:ipv4': {'route': [{'destination-prefix': '0.0.0.0/0', 'next-hop': {'outgoing-interface': 'GigabitEthernet1'}}]}}}

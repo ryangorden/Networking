@@ -1,0 +1,16 @@
+{
+    "route": [
+        {
+            "destination-prefix": "{{ destination_prefix_1 }}",
+            "next-hop": {
+                "outgoing-interface": "{{ hop_1 }}"
+            }
+        },
+        {
+            "destination-prefix": "{{ destination_prefix_2 }}",
+            "next-hop": {
+                "next-hop-address": "{{ hop_2 }}"
+            }
+        }
+    ]
+}
