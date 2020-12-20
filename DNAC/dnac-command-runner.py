@@ -1,7 +1,7 @@
 import requests
 from requests.auth import HTTPBasicAuth
 import json
-from pprintpp import pprintn
+from pprintpp import pprint
 
 username= 'devnetuser'
 password= 'Cisco123!'
@@ -54,17 +54,16 @@ def get_task_by_id(server,headers,tokens,task_id):
 
 
 if __name__=='__main__':
+    requests.packages.urllib3.disable_warnings()
     tokens = get_token(server, headers, auth)
-    print(tokens)
-    exit()
     device_id_list= get_device_id(server,headers,tokens)
-
     payload= {
         'commands': ['show cdp nei',
                      'show ip int br'
                     ],
         'deviceUuids': device_id_list
               }
+
     task_id= command_runner(server,headers,tokens,payload)
     data= get_task_by_id(server,headers,tokens,task_id)
     print(data)
