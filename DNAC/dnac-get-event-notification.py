@@ -29,9 +29,38 @@ def event_notification(server,headers,tokens):
     event_notice = resp.json() #['response']
     pprint(event_notice)
 
+def sub_notice(server,headers,tokens,payload):
+    event_endpoint = '/dna/intent/api/v1/event/subscription'
+    url = server + event_endpoint
+    headers['X-Auth-Token'] = tokens
+    resp = requests.post(url, headers=headers,data=json.dumps(payload), verify=False)
+    print(resp.status_code)
+    pprint(resp.json())
 
 
 
 if __name__=='__main__':
     tokens = get_token(server, headers, auth)
     event_notification(server,headers,tokens)
+    events_list= ['NETWORK-NON-FABRIC_WIRED-1-250','NETWORK-DEVICES-2-201']
+    payload= [
+    {
+        "name": "TFMX sub",
+        "subscriptionEndpoints": [
+            {
+                "subscriptionDetails": {
+                    "connectionType": "REST",
+                    "name": "My Flask App",
+                    "description": "ingest payload into Hard Drive",
+                    "method": "POST",
+                    "url": "https://webhook.site/c48478ae-c9f8-46c6-abe0-4daf25f8196c"
+                }
+            }
+        ],
+        "filter": {
+            "eventIds": events_list
+        }
+    }
+]
+    webhook= sub_notice(server,headers,tokens,payload)
+
