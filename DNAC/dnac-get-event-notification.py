@@ -53,7 +53,7 @@ if __name__=='__main__':
                     "name": "My Flask App",
                     "description": "ingest payload into Hard Drive",
                     "method": "POST",
-                    "url": "https://webhook.site/c48478ae-c9f8-46c6-abe0-4daf25f8196c"
+                    "url": "https://18.222.226.251/webhook"
                 }
             }
         ],
