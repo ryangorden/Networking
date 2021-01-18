@@ -1,0 +1,63 @@
+{
+    "Cisco-IOS-XE-acl:extended": {
+        "name": "ACL-WEBAUTH-REDIRECT",
+        "access-list-seq-rule": [
+            {
+                "sequence": "10",
+                "ace-rule": {
+                    "action": "deny",
+                    "protocol": "udp",
+                    "any": [
+                        null
+                    ],
+                    "dst-eq": "domain",
+                    "dst-any": [
+                        null
+                    ]
+                }
+            },
+            {
+                "sequence": "20",
+                "ace-rule": {
+                    "action": "deny",
+                    "protocol": "udp",
+                    "any": [
+                        null
+                    ],
+                    "dst-any": [
+                        null
+                    ],
+                    "dst-eq": 67
+                }
+            },
+            {
+                "sequence": "30",
+                "ace-rule": {
+                    "action": "permit",
+                    "protocol": "tcp",
+                    "any": [
+                        null
+                    ],
+                    "dst-any": [
+                        null
+                    ],
+                    "dst-eq": 80
+                }
+            },
+            {
+                "sequence": "40",
+                "ace-rule": {
+                    "action": "permit",
+                    "protocol": "tcp",
+                    "any": [
+                        null
+                    ],
+                    "dst-any": [
+                        null
+                    ],
+                    "dst-eq": 443
+                }
+            }
+        ]
+    }
+}
