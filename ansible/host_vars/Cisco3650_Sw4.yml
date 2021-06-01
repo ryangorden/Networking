@@ -1,0 +1,14 @@
+---
+vlans:
+  - name: "Cameras"
+    id: 100
+    ip_address: "192.168.2.250"
+    subnetMask: "255.255.255.0"
+    description: "Cameras"
+  - name: "phones_70"
+    id: 70
+    ip_address: "10.120.40.2"
+    subnetMask: "255.255.255.0"
+    description: "phones_70"
+
+...

@@ -1,0 +1,28 @@
+---
+- name: "Play 1-Get IP Addresses for device"
+  hosts: routers
+  connection: network_cli
+
+  tasks:
+
+    - name: "TASK 1- Get IP Address for devices"
+      ios_command:
+        commands:
+          - "show ip interface brief"
+      register: cli_result
+
+    - name: "Task 2- Print IP Address output"
+      debug:
+        msg: "{{ cli_result }}stdout[0]\n"
+    
+    - name: "Task 3- Create outputs/ folder"
+      file:
+        path: "outputs"
+        state: directory
+      run_once: true
+
+    - name: "Task 4- Write output to file"
+      copy:
+        content: "{{ cli_result.stdout[0] }}\n"
+        dest: "outputs/{{ inventory_hostname }}.txt"
+...

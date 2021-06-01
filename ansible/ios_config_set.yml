@@ -1,0 +1,17 @@
+---
+- name: "PLAY 1: Manage VLANs with ios_config and jinja2"
+  hosts: Cisco3650_Sw4
+  connection: network_cli
+  tasks:
+    - name: "TASK 1: Apply IOS VLANs config via SSH/CLI"
+      ios_config:
+        src: "templates/svi.j2"
+        save_when: changed
+      notify: config_changed
+      register: cli_result
+
+  handlers:
+    - name: "HANDLER 1: Display relevant changes"
+      listen: config_changed
+      debug:
+        msg: "{{ cli_result.commands }}"
