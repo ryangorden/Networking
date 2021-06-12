@@ -11,7 +11,7 @@ template= env.get_template("filter_template.j2")
 payload= template.render(var)
 
 print(payload)
-#exit()
+exit()
 with manager.connect(**my_device) as m:
     response= m.edit_config(payload, target= "running")
 
