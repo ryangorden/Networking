@@ -1,14 +1,54 @@
 ---
 vlans:
-  - name: "Cameras"
+  - name: "Servers"
+    id: 20
+    ip_address: "10.38.120.1"
+    subnetMask: "255.255.255.128"
+  - name: "LSDVI_DORMS"
+    id: 90
+    ip_address: "10.38.121.1"
+    subnetMask: "255.255.255.192"
+  - name: "LSDVI"
+    id: 80
+    ip_address: "10.38.124.1"
+    subnetMask: "255.255.255.0"
+  - name: "LSD"
+    id: 30
+    ip_address: "10.38.124.1"
+    subnetMask: "255.255.255.0"
+  - name: "LSD_DORMS"
+    id: 40
+    ip_address: "10.38.121.65"
+    subnetMask: "255.255.255.192"
+  - name: "ESS"
     id: 100
-    ip_address: "192.168.2.250"
+    ip_address: "10.38.120.129"
+    subnetMask: "255.255.255.128"
+  - name: "MGMT"
+    id: 3
+    ip_address: "10.1.51.1"
     subnetMask: "255.255.255.0"
-    description: "Cameras"
-  - name: "phones_70"
+  - name: ""
+    id: 120
+    ip_address: ""
+    subnetMask: ""
+  - name: ""
+    id: 55
+    ip_address: ""
+    subnetMask: ""
+  - name: ""
+    id: 50
+    ip_address: ""
+    subnetMask: ""
+  - name: "Printers"
+    id: 60
+    ip_address: "192.168.1.1"
+    subnetMask: "255.255.255.0"
+  - name: "Phones"
     id: 70
-    ip_address: "10.120.40.2"
+    ip_address: "192.168.2.1"
     subnetMask: "255.255.255.0"
-    description: "phones_70"
-
-...
+  - name: "Wireless"
+    id: 110
+    ip_address: "10.38.123.1"
+    subnetMask: "255.255.255.0"

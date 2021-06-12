@@ -1,10 +1,10 @@
 ---
 ansible_network_os: ios
-ansible_user: jsam
-ansible_password: Dove631!
+ansible_user: <username>
+ansible_password: <password>
 #authorize: yes
-#auth_pass: BRcats2250!
+#auth_pass: <enable_mode>
 ansible_become: yes
 ansible_become_method: enable
-ansible_become_password: BRcats2250!
+ansible_become_password: <enable_mode>
 ...

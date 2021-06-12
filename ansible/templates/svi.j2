@@ -3,5 +3,5 @@ vlan {{ vlan.id }}
  name {{ vlan.name }}
 interface vlan {{ vlan.id }}
  ip address {{ vlan.ip_address }} {{ vlan.subnetMask }}
- description {{ vlan.description }}
+ description {{ vlan.name }}
  {% endfor %}
