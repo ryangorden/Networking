@@ -1,5 +1,7 @@
 ---
-"name": "Vlan500"
+"name": "GigabitEthernet2"
 "type": "iana-if-type:l3ipvlan"
+"desc": "Have no fear because I am here MHA"
 "ip": "192.168.1.2"
 "netmask": "255.255.255.0"
+...

@@ -2,7 +2,7 @@ import requests
 from requests.auth import HTTPBasicAuth
 import json
 
-server= "https://10.10.20.100/"
+server= "https://10.10.20.48/"
 
 resource="restconf/data/ietf-interfaces:interfaces/"
 
@@ -13,11 +13,14 @@ headers = {"Accept": "application/yang-data+json",
 
 auth= HTTPBasicAuth("developer", "C1sco12345")
 
+
+#iana-if-type:softwareLoopback
+#iana-if-type:l3ipvlan
 payload = {
     "ietf-interfaces:interface": {
-        "name": "Vlan500",
+        "name": "Loopback500",
         "description": "RG1 Test",
-        "type": "iana-if-type:l3ipvlan",
+        "type": "iana-if-type:softwareLoopback",
         "enabled": False,
         "ietf-ip:ipv4": {"address": [{"ip": "192.168.1.1", "netmask": "255.255.255.0"}]},
         "ietf-ip:ipv6": {}
