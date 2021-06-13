@@ -1,0 +1,10 @@
+{% for ip in info.dhcp %}
+{
+    "low-high-address-list": [
+        {
+            "low-address": "{{ ip.low_address }}",
+            "high-address": "{{ ip.high_address }}"
+        }
+    ]
+}
+{% endfor %}

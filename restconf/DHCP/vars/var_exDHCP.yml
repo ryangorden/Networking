@@ -1,0 +1,5 @@
+---
+dhcp:
+  - low_address: "192.168.3.1"
+    high_address: "192.168.3.10"
+...

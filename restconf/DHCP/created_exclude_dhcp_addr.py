@@ -3,7 +3,6 @@ from jinja2 import Environment, FileSystemLoader
 from yaml import safe_load
 from requests.auth import HTTPBasicAuth
 
-
 def get_file(file):
     '''
     validate that file is dictionary with a list as the key
@@ -23,29 +22,23 @@ def template_payload(template_name,values):
 
 
 server= "https://10.10.20.48/"
-resource="restconf/data/Cisco-IOS-XE-native:native/ip/dhcp/"
+resource="restconf/data/Cisco-IOS-XE-native:native/ip/dhcp/excluded-address/"
 url= f"{server}{resource}"
-
 
 headers = {"Accept": "application/yang-data+json",
            "Content-Type": "application/yang-data+json"}
 
 auth= HTTPBasicAuth("developer", "C1sco12345")
 
-values = get_file("vars/var_dhcp_rest.yml")
-template_name= "templates/template_dhcp.j2"
+values = get_file("vars/var_exDHCP.yml")
+template_name= "templates/template_exDHCP.j2"
 resp_data= template_payload(template_name, values)
-
-# Replace single quote with double quotes to make
-# data json compliant
-new_data=resp_data.replace("'",'"')
-
-
+print(resp_data)
 
 requests.packages.urllib3.disable_warnings()
-resp= requests.post(url, headers=headers, auth=auth, data= new_data, verify=False)
+resp= requests.post(url, headers=headers, auth=auth, data= resp_data, verify=False)
 
 if resp.status_code == 201:
-    print("DHCP Scope Create")
+    print("DHCP address excluded from scope")
 else:
-    print("Failed")
+    print(resp.text)
