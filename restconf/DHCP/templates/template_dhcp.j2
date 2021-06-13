@@ -1,0 +1,22 @@
+{% for pool in info.dhcp %}
+{
+  "Cisco-IOS-XE-dhcp:pool": [
+    {
+      "id": "{{ pool.id }}",
+      "default-router": {
+        "default-router-list": {{ pool.default_router.default_router_list }}
+      },
+      "dns-server": {
+        "dns-server-list": {{ pool.dns_server.dns_server_list }}
+      },
+      "domain-name": "{{ pool.domain_name }}",
+      "network": {
+        "primary-network": {
+          "number": "{{ pool.network.primary_network.number }}",
+          "mask": "{{ pool.network.primary_network.mask }}"
+        }
+      }
+    }
+  ]
+}
+{% endfor %}

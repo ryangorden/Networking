@@ -1,0 +1,21 @@
+#ip dhcp pool LAN2
+# network 192.168.2.0 255.255.255.0
+# default-router 192.168.2.1
+# dns-server 8.8.8.8 8.8.8.4
+# domain-name test.local
+---
+dhcp:
+  - id: "LAN2"
+    default_router:
+      default_router_list:
+        - "192.168.2.1"
+    dns_server:
+      dns_server_list:
+        - "8.8.8.8"
+        - "8.8.8.4"
+    domain_name: "test.local"
+    network:
+      primary_network:
+        number: "192.168.2.0"
+        mask: "/24"
+...
