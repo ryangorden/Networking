@@ -1,0 +1,20 @@
+---
+- name: "Play 1: RestConf Getter"
+  host: dot18
+  connection: local
+  task:
+    - name: "Task 1: Get info"
+      uri:
+        url: "{{ url }}/data/native"
+        user: "{{ ansible_user }}"
+        password: "{{ ansible_password}}"
+        method: GET
+        return_content: true
+        headers:
+          Accept: "application/yang-data+json"
+        validate_certs: false
+        register: getter
+    - name: "Task 2: Print Output"
+      debug:
+        var: getter.json
+...
