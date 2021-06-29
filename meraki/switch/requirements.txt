@@ -1,0 +1,8 @@
+Flask==2.0.1
+Jinja2==3.0.1
+meraki==1.10.0
+pprintpp==0.4.0
+pyaml==20.4.0
+python-dotenv==0.18.0
+PyYAML==5.4.1
+requests==2.25.1

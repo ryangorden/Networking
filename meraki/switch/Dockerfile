@@ -1,11 +1,11 @@
 FROM ubuntu
-LABEL maintainer="ryangroden@gmail.co>
+LABEL maintainer="ryangroden@gmail.com
 
-RUN apt-get update -y && apt-get inst>
+RUN apt-get update -y && apt-get install -y python3-pip python3-dev
 
 
 
-COPY ./requirements.txt /src/requirem>
+COPY ./requirements.txt /warren_easton/requirements.txt
 
 
 WORKDIR /warren_easton
