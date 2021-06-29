@@ -21,9 +21,6 @@ before_script:
   - "docker container ls"
 
 script:
-  - "cd meraki"
-  - "cd switch"
-  - "cd warren_easton"
   - "python -m unittest test_update_portAccess.py"
 
 #after_script:
