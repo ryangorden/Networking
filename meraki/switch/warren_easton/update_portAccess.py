@@ -21,7 +21,7 @@ for serial in serialNums.keys():
         print("Configuring" + serial)
         if serial== "Q2AY-YH7H-TBPU" and portId in range(1,6):
             print("Configuring " + str(portId) + " in vlan 1")
-            portConfig= {"vlan": 1, "type":"access", portId": portId,"serial": serial}
+            portConfig= {"vlan": 1, "type":"access", "portId": portId,"serial": serial}
             resp = dashboard.switch.updateDeviceSwitchPort(**portConfig)
         else:
             print("Configuring " + str(portId) + " in vlan 40")
