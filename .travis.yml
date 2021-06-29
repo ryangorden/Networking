@@ -23,14 +23,6 @@ before_script:
 script:
   - "python -m unittest warren_easton/test_update_portAccess.py"
 
-#after_script:
-#  - "docker-compose down"
-
-deploy:
-  - "python update_portAccess.py"
-
-after_deploy:
+after_script:
   - "docker-compose down"
-
-
 ...
