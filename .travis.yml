@@ -21,7 +21,7 @@ before_script:
   - "docker container ls"
 
 script:
-  - "python -m unittest test_update_portAccess.py"
+  - "python -m unittest warren_easton/test_update_portAccess.py"
 
 #after_script:
 #  - "docker-compose down"
