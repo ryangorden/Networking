@@ -17,13 +17,13 @@ key = os.environ.get("APIKEY")
 for serial in serialNums.keys():
     print(serial)
     dashboard= meraki.DashboardAPI(key)
-    for porId in range(1,20)
+    for portId in range(1,20):
         print("Configuring" + serial)
         if serial== "Q2AY-YH7H-TBPU" and portId in range(1,6):
-            print("Configuring " + portId + " in vlan 1")
-            portConfig= {"vlan": 1, "portId": portId,"serial": serial}
+            print("Configuring " + str(portId) + " in vlan 1")
+            portConfig= {"vlan": 1, "type":"access", portId": portId,"serial": serial}
             resp = dashboard.switch.updateDeviceSwitchPort(**portConfig)
         else:
-            print("Configuring " + portId + " in vlan 1")
-            portConfig= {"vlan": 40, "voiceVlan": 110, "portId": portId,"serial": serial}
+            print("Configuring " + str(portId) + " in vlan 40")
+            portConfig= {"vlan": 40, "type": "access", "voiceVlan": 110, "portId": portId,"serial": serial}
             resp = dashboard.switch.updateDeviceSwitchPort(**portConfig)
