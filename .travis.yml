@@ -14,7 +14,7 @@ before_script:
   - "cd switch"
   - "cd warren_easton"
   - "python -m unittest test_update_portAccess.py"
-  - "docker image build -t meraki_rest"
+  - "docker image build -t meraki_rest ."
   - "docker-compose up -d"
   - "docker container ls"
 
