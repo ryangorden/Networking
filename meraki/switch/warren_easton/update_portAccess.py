@@ -1,66 +1,29 @@
-import requests
-import json
-import time
-
-serial= "Q2EX-8W8H-39HZ"
-
-
-headers= {"X-Cisco-Meraki-API-Key": "c5fabaf9a806f8861fb99b3bf0ed820d73001c92",
-          "Accept": "application/json",
-          "Content-Type": "application/json"}
-
-base_url= "https://api.meraki.com/api/v1"
-port_endpoint =f"/devices/{serial}/switch/ports"
+import meraki
+import os
+from dotenv import load_dotenv
+from yaml import safe_load
 
 
 
-null= "null"
+with open("inventory/host.yml", 'r') as host:
+    switches = safe_load(host)
+    serialNums = switches['meraki']['switches']['serial']
 
-# payload= {
-#   "name": "Access Port",
-#   "enabled": True,
-#   "poeEnabled": True,
-#   "type": "access",
-#   "vlan": 108,
-#   "voiceVlan": 269,
-#   "isolationEnabled": False,
-#   "rstpEnabled": True,
-# }
+load_dotenv()
+key = os.environ.get("APIKEY")
 
-payload= {
-  "enabled": True,
-  "poeEnabled": True,
-  "type": "access",
-  "vlan": 40,
-  "voice vlan": null,
-  "isolationEnabled": False,
-  "rstpEnabled": True
-}
-# p= {"enabled": True,
-#     "poeEnabled": True}
 
-for portId in range(1,21):
-    resp= requests.put(url=f"{base_url}{port_endpoint}/{portId}", headers=headers, data=json.dumps(payload))
-    url = f"{base_url}{port_endpoint}/{portId}"
-    print(url)
-    print(portId)
-    print(resp.status_code)
-# print("Delay for 10 seconds")
-# time.sleep(10)
-#
-# for portId in range(33,37):
-#     resp= requests.put(url=f"{base_url}{port_endpoint}/{portId}", headers=headers, data=json.dumps(p))
-#     print(resp.status_code)
-# print("Delay for 10 seconds")
-# time.sleep(10)
-# for portId in range(9,11):
-#     resp= requests.put(url=f"{base_url}{port_endpoint}/{portId}", headers=headers, data=json.dumps(payload))
-#     print(resp.status_code)
-# print("Delay for 10 seconds")
-# time.sleep(10)
-# for portId in range(9,11):
-#     resp= requests.put(url=f"{base_url}{port_endpoint}/{portId}", headers=headers, data=json.dumps(p))
-#     print(resp.status_code)
 
-# resp= requests.get(url=f"{base_url}{port_endpoint}/{25}", headers=headers)
-# print(resp.text)
+for serial in serialNums.keys():
+    print(serial)
+    dashboard= meraki.DashboardAPI(key)
+    for porId in range(1,20)
+        print("Configuring" + serial)
+        if serial== "Q2AY-YH7H-TBPU" and portId in range(1,6):
+            print("Configuring " + portId + " in vlan 1")
+            portConfig= {"vlan": 1, "portId": portId,"serial": serial}
+            resp = dashboard.switch.updateDeviceSwitchPort(**portConfig)
+        else:
+            print("Configuring " + portId + " in vlan 1")
+            portConfig= {"vlan": 40, "voiceVlan": 110, "portId": portId,"serial": serial}
+            resp = dashboard.switch.updateDeviceSwitchPort(**portConfig)

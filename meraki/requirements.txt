@@ -1,2 +1,6 @@
 flask
 requests
+pyaml
+meraki
+jinja2
+pprintpp

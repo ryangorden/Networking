@@ -13,8 +13,8 @@ before_script:
   - "cd meraki"
   - "cd switch"
   - "cd warren_easton"
-  - "python -m unittest test_update_p>
-  - "docker image build -t meraki_res>
+  - "python -m unittest test_update_portAccess.py"
+  - "docker image build -t meraki_rest>
   - "docker-compose up -d"
   - "docker container ls"
 
@@ -22,8 +22,7 @@ script:
   - "cd meraki"
   - "cd switch"
   - "cd warren_easton"
-  - "python -m unittest test_update_p>
+  - "python -m unittest test_update_portAccess.py"
 
 after_script:
   - "docker-compose down"
-...
