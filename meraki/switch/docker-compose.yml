@@ -1,0 +1,11 @@
+---
+version: "3.7"
+services:
+  meraki_app:
+    build: "."
+    image: "meraki_rest"
+    volumes:
+      - type: "bind"
+        source: "./warren_easton"
+        target: "/warren_easton"
+...

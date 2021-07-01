@@ -7,22 +7,22 @@ services:
   - "docker"
 
 install:
-  - "cd meraki"
   - "pip install -r requirements.txt"
 
 before_script:
+  - "cd meraki"
   - "cd switch"
   - "cd warren_easton"
   - "python -m unittest test_update_portAccess.py"
-  - "cd .."
-  - "ls"
-  - "docker image build -t meraki_rest ."
+  - "docker image build -t meraki_rest>
   - "docker-compose up -d"
   - "docker container ls"
 
 script:
-  - "python -m unittest warren_easton/test_update_portAccess.py"
+  - "cd meraki"
+  - "cd switch"
+  - "cd warren_easton"
+  - "python -m unittest test_update_portAccess.py"
 
 after_script:
   - "docker-compose down"
-...

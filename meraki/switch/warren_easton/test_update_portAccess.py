@@ -1,28 +1,18 @@
-import json
-import requests
+import meraki
+import os
+from dotenv import load_dotenv
 from unittest import TestCase
+from pprintpp import pprint
 
 
 
-class TestHome(TestCase):
-    def test_home(self):
-        headers = {"X-Cisco-Meraki-API-Key": "c5fabaf9a806f8861fb99b3bf0ed820d73001c92",
-                   "Accept": "application/json",
-                   "Content-Type": "application/json"}
+class TestPort(TestCase):
+    load_dotenv()
+    key = os.environ.get("APIKEY")
+    def test_port(self,key=key):
+        dashboard= meraki.DashboardAPI(key)
 
-        base_url = "https://api.meraki.com/api/v1"
-        port_endpoint = f"/devices/{serial}/switch/ports"
-
-        payload = {
-            "enabled": True,
-            "poeEnabled": True,
-            "type": "access",
-            "vlan": 40,
-            "voice vlan": null,
-            "isolationEnabled": False,
-            "rstpEnabled": True
-        }
-
-        resp = requests.put(url=f"{base_url}{port_endpoint}/{portId}", headers=headers, data=json.dumps(payload))
-        self.assertEqual(resp.status_code,201)
-
+        portConfig= {"vlan": 10, "portId": 11,"serial": "Q2EX-8W8H-39HZ"}
+        resp = dashboard.switch.updateDeviceSwitchPort(**portConfig)
+       # pprint(resp)
+        self.assertEqual(resp['vlan'],10)
