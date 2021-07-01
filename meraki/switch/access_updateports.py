@@ -33,9 +33,10 @@ def access_update_ports(dashboard,serial,port_id):
     print(response)
 
 if __name__ == '__main__':
-    password = sys.argv[1]
-    apikey= decrypt_key(password)
+    # password = sys.argv[1]
+    # apikey= decrypt_key(password)
+    apikey = 'c5fabaf9a806f8861fb99b3bf0ed820d73001c92'
     dashboard= meraki.DashboardAPI(apikey)
     serial= input('Enter the device serial number: ')
-    for port_id in range(1,49):
+    for port_id in range(10,13):
         access_update_ports(dashboard,serial,port_id)
