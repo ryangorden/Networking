@@ -7,7 +7,7 @@ from yaml import safe_load
 
 app = Flask(__name__)
 
-@route('/', methods=['GET'])
+@app.route('/', methods=['GET'])
 def get_home():
     return jsonify({"Meraki": "Port update application"})
 
