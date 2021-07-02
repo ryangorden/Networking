@@ -12,9 +12,6 @@ def get_home():
     return jsonify({"Meraki": "Port update application"})
 
 if __name__ == '__main__':
-    app.run(debug=True, port=80, host="0.0.0.0")
-
-
     # open host file
     with open("inventory/host.yml", 'r') as host:
         switches = safe_load(host)
@@ -44,3 +41,5 @@ if __name__ == '__main__':
                 print("Configuring " + str(portId) + " in vlan 40")
                 portConfig= {"vlan": 40, "type": "access", "voiceVlan": 110, "portId": portId,"serial": serial}
                 resp = dashboard.switch.updateDeviceSwitchPort(**portConfig)
+
+    app.run(debug=True, port=80, host="0.0.0.0")
