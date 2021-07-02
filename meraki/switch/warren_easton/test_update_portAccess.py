@@ -1,10 +1,9 @@
 import meraki
 import os
-from app import app
 from dotenv import load_dotenv
 from unittest import TestCase
 from pprintpp import pprint
-
+from update_portAccess import app
 
 
 class TestPort(TestCase):
