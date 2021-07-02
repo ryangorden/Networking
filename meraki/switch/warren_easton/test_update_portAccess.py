@@ -18,6 +18,6 @@ class TestPort(TestCase):
         self.assertEqual(resp['vlan'],10)
 
     def test_home(self):
-        with app.test_client as c:
+        with app.test_client() as c:
             resp= c.get('/')
-            self.assertEqual(resp.status_code,200)
+            self.assertEqual(resp.status_code, 200)
