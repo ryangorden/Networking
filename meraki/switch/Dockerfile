@@ -1,5 +1,5 @@
 FROM ubuntu
-LABEL maintainer="ryangroden@gmail.com"
+LABEL maintainer="ryanw.gorden@gmail.com"
 
 RUN apt-get update -y && apt-get install -y python3-pip python3-dev
 
