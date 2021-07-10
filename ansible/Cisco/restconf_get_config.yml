@@ -1,6 +1,6 @@
 ---
-- name: "Play 1: RestConf Getter"
-  host: dot18
+#- name: "Play 1: RestConf Getter"
+- hosts: dot18
   connection: local
   task:
     - name: "Task 1: Get info"
@@ -14,7 +14,7 @@
           Accept: "application/yang-data+json"
         validate_certs: false
         register: getter
-    - name: "Task 2: Print Output"
-      debug:
+#    - name: "Task 2: Print Output"
+    - debug:
         var: getter.json
 ...
