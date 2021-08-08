@@ -1,0 +1,17 @@
+---
+- name: "Play 1-Get IP Addresses for device"
+  hosts: 10.102.30.254
+  connection: ansible.netcommon.network_cli
+
+  tasks:
+
+    - name: "TASK 1- Get interfaces"
+      ios_command:
+        commands:
+          - "show ip interface brief"
+      register: cli_result
+
+    - name: "Task 2- Print IP Address output"
+      debug:
+        msg: "{{ cli_result.stdout_lines[0] }}"
+...
