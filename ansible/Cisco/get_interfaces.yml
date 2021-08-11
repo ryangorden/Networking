@@ -1,6 +1,6 @@
 ---
 - name: "Play 1-Get IP Addresses for device"
-  hosts: 10.102.30.254
+  hosts: edge_router
   connection: ansible.netcommon.network_cli
 
   tasks:
