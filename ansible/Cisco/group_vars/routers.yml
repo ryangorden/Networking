@@ -1,12 +1,9 @@
 ---
 ansible_network_os: ios
-ansible_user: jsam
-ansible_password: Dove631!
-#authorize: yes
-#auth_pass: <enable_mode>
+ansible_user: <username>
+ansible_password: <password>
 ansible_become: yes
 ansible_become_method: enable
-ansible_become_password: BRcats2250!
-# url is for restconf restful request
+ansible_become_password: <enable_mode>
 url: "https://{{ ansible_host }}/restconf"
 ...
