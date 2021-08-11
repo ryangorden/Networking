@@ -1,0 +1,38 @@
+---
+- name: "Play 1-Get IP Addresses for device"
+  hosts: 2250_wan_router
+  connection: network_cli
+
+  tasks:
+
+    - name: "TASK 1- Get Routes"
+      ios_command:
+        commands:
+          - "show ip route"
+      register: cli_result
+
+    - name: "Task 2- Print IP Address output"
+      debug:
+        msg: "{{ cli_result.stdout_lines[0] }}"
+
+    - name: "Task 3- Create new directory"
+      file: 
+        path: output_folder
+        state: directory
+      run_once: true
+
+    - name: "Task 4- write output to file"
+      copy:
+        content: "{{ cli_result.stdout_lines[0] }}"
+        dest: "output_folder/{{ inventory_hostname }}.json"
+
+    - name: "Task 5- delete file"
+      file:
+        state: absent
+        path: "output_folder/{{ inventory_hostname }}.json"
+
+    - name: "Task 6- delete directory"
+      file:
+        state: absent
+        path: output_folder
+...
