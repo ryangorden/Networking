@@ -6,5 +6,11 @@ ansible_password: <password>
 ansible_become: yes
 ansible_become_method: enable
 ansible_become_password: <enable_mode>
-url: "https:// {{ ansible_host }}/restconf"
+interfaces:
+  - name: loopback10
+    desc: "first"
+  - name: loopback20
+    desc: "second"
+  - name: loopback30
+    desc: "third"
 ...
