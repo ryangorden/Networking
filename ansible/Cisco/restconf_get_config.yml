@@ -1,20 +1,25 @@
 ---
-#- name: "Play 1: RestConf Getter"
-- hosts: dot18
+- name: "Play 1: RestConf Getter"
+  hosts: localhost
   connection: local
-  task:
+  vars:
+    url: "https://10.10.20.48/restconf"
+    USERNAME: "{{ lookup('env', 'ROUTER_USERNAME') }}"
+    PASSWORD: "{{ lookup('env', 'ROUTER_PASSWORD') }}"
+
+  tasks:
     - name: "Task 1: Get info"
       uri:
         url: "{{ url }}/data/native"
-        user: "{{ ansible_user }}"
-        password: "{{ ansible_password}}"
+        url_username: "{{ USERNAME }}"
+        url_password: "{{ PASSWORD}}"
         method: GET
-        return_content: true
         headers:
           Accept: "application/yang-data+json"
-        validate_certs: false
-        register: getter
-#    - name: "Task 2: Print Output"
-    - debug:
-        var: getter.json
+        validate_certs: no
+      register: runningConfig
+
+    - name: "Task 2: Print Output"
+      debug:
+        msg: "{{ runningConfig.json }}"
 ...
