@@ -9,9 +9,9 @@ delete the acl. It has been tested with Cisco IOS version
 import json
 import requests
 
-base_server= "https://ios-xe-mgmt.cisco.com"
+base_server= "https://10.10.20.100"
 acls_endpoint= "/restconf/data/Cisco-IOS-XE-native:native/ip/access-list/"
-port= 9443
+port= 443
 
 url= f"{base_server}:{port}{acls_endpoint}"
 
@@ -28,6 +28,7 @@ with open("ACL-WEBAUTH-REDIRECT.json", "r") as file:
 
 
 # send post requests to create a new acl
+requests.packages.urllib3.disable_warnings()
 resp= requests.post(url, headers=headers, auth=auth, data=json.dumps(payload), verify= False)
 print(resp.status_code)
 
@@ -37,7 +38,6 @@ print(resp.status_code)
 acl_endpoint= "/restconf/data/Cisco-IOS-XE-native:native/ip/access-list/extended=ACL-WEBAUTH-REDIRECT"
 url= f"{base_server}:{port}{acl_endpoint}"
 resp= requests.get(url, headers=headers, auth=auth, verify= False)
-requests.packages.urllib3.disable_warnings()
 print(resp.text)
 
 # Delete acl we just created
