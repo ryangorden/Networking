@@ -1,0 +1,11 @@
+---
+interfaces:
+  - name: "Loopback500"
+    description: "RG2 Test"
+#iana-if-type:softwareLoopback
+#iana-if-type:l3ipvlan
+    type: "iana-if-type:softwareLoopback"
+    enabled: "false"
+    ip: "192.168.150.1"
+    netmask: "255.255.255.0"
+...

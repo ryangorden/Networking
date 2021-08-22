@@ -1,0 +1,11 @@
+{% for iface in data.interfaces %}
+{
+    "ietf-interfaces:interface": {
+        "name": "{{ iface.name }}",
+        "description": "{{ iface.description }}",
+        "type": "{{ iface.type }}",
+        "enabled": {{ iface.enabled }},
+        "ietf-ip:ipv4":{"address":[{"ip": "{{ iface.ip }}", "netmask": "{{ iface.netmask }}"}]},
+        "ietf-ip:ipv6": {}
+    }}
+{% endfor %}
