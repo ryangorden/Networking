@@ -37,6 +37,7 @@ print(resp.status_code)
 acl_endpoint= "/restconf/data/Cisco-IOS-XE-native:native/ip/access-list/extended=ACL-WEBAUTH-REDIRECT"
 url= f"{base_server}:{port}{acl_endpoint}"
 resp= requests.get(url, headers=headers, auth=auth, verify= False)
+requests.packages.urllib3.disable_warnings()
 print(resp.text)
 
 # Delete acl we just created
