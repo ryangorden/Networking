@@ -2,7 +2,7 @@ import requests
 from requests.auth import HTTPBasicAuth
 
 
-server= "https://10.10.20.48/"
+server= "https://10.10.20.100/"
 resource="restconf/data/Cisco-IOS-XE-native:native/ip/dhcp/excluded-address/"
 url= f"{server}{resource}"
 

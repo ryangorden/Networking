@@ -22,7 +22,7 @@ def template_payload(template_name,values):
     return payload
 
 
-server= "https://10.10.20.48/"
+server= "https://10.10.20.100/"
 resource="restconf/data/Cisco-IOS-XE-native:native/ip/dhcp/"
 url= f"{server}{resource}"
 
