@@ -44,6 +44,7 @@ new_data=resp_data.replace("'",'"')
 
 requests.packages.urllib3.disable_warnings()
 resp= requests.post(url, headers=headers, auth=auth, data= new_data, verify=False)
+requests.packages.urllib3.disable_warnings()
 
 if resp.status_code == 201:
     print("DHCP Scope Create")
