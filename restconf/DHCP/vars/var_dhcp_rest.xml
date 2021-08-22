@@ -1,0 +1,19 @@
+<dhcp>
+  <id>LAN2</id>
+  <default_router>
+    <default_router_list>192.168.2.1</default_router_list>
+  </default_router>
+  <dns_server>
+    <dns_server_list>8.8.8.8</dns_server_list>
+  </dns_server>
+  <dns_server>
+    <dns_server_list>8.8.84</dns_server_list>
+  </dns_server>
+  <domain_name>test.local</domain_name>
+  <network>
+    <primary_network>
+      <number>192.168.1.0</number>
+      <mask>/24</mask>
+    </primary_network>
+  </network>
+</dhcp>
