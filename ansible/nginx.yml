@@ -1,4 +1,5 @@
-- hosts: web
+- name: Install web server (nginx on ubuntu)
+  hosts: web
   become: yes # nick used true
   tasks:
   - name: "apt-get update"

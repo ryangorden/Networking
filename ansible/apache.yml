@@ -1,0 +1,9 @@
+---
+host: web
+become: yes
+tasks:
+  - name: "Ensure Apache2 is installed"
+    apt:
+      name: apache2
+      state: lastest
+...
