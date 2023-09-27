@@ -1,7 +1,0 @@
----
-ansible_user: <enter username>
-ansible_password: <enter password>
-ansible_connection= winrm
-ansible_winrm_transport= credssp
-ansible_winrm_server_cert_validation= ignore
-...
