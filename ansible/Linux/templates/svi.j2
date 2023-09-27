@@ -1,7 +1,0 @@
-{% for vlan in vlans %}
-vlan {{ vlan.id }}
- name {{ vlan.name }}
-interface vlan {{ vlan.id }}
- ip address {{ vlan.ip_address }} {{ vlan.subnetMask }}
- description {{ vlan.name }}
- {% endfor %}
