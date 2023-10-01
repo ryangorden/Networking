@@ -1,0 +1,18 @@
+---
+- name: configure snmp
+  hosts: routers
+  connection: local
+  tasks:
+    - name: configure snmp via restconf
+      block:
+        - name: cisco devices
+          ansible.builtin.uri:
+            url:
+            body:
+            headers:
+            method:
+      rescue:
+        - name: cisco device
+          connection: ansible.netcommon.network_cli
+          cisco.ios.ios_config:
+            config:
