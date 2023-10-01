@@ -1,0 +1,35 @@
+---
+- name: backup devices f5
+  hosts: F5
+  connection: local
+  tasks:
+    - name: Create a UCS backup
+      f5networks.f5_modules.bigip_ucs_fetch:
+        src: "{{ inventory_hostname }}.ucs"
+        only_create_file: yes
+        provider: "{{ provider }}"
+
+    - name: Download a UCS backup
+      f5networks.f5_modules.bigip_ucs_fetch:
+        src: "{{ inventory_hostname }}"
+        dest: "f5/backups/{{ inventory_hostname }}.ucs"
+        provider: "{{ provider }}"
+
+- name: backup devices cisco
+  hosts: routers
+  connection: ansible.netcommon.network_cli
+  tasks:
+    - name: backup cisco router
+      cisco.ios.ios_config:
+        backup: true
+        backup_options:
+          dir_path: cisco/ios/backups
+          filename: "{{ inventory_hostname }}.cfg"
+      when: ansible_network_os == "ios"
+    
+    - name: backup vyos routers
+      vyos.vyos.vyos_config:
+        backup: true
+        backup_options:
+          dir_path: /vyos/backups
+          filename: "{{ inventory_hostname }}.cfg"

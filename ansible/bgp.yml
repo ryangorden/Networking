@@ -1,0 +1,12 @@
+---
+- name: config cisco bgp
+  hosts: routers
+  tasks:
+    - name:
+      cisco.ios.bgp_global:
+        config:
+          as_number: 65000
+          networks:
+            - 10.0.0.0/24
+          neighbors:
+        state: present
