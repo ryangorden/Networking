@@ -1,0 +1,14 @@
+---
+- name:
+  hosts: routers
+  connection: ansible.netcommon.network_cli
+  vars:
+    destination_ips:
+      - 72.71.1.1
+      - 162.12.1.1
+  tasks:
+    - name: Test reachability to 198.51.100.251 using default vrf
+      cisco.ios.ios_ping:
+        dest: "{{ item }}"
+      loop: "{{ destination_ips }}"
+      when: ansible_network_os == "ios"
