@@ -1,0 +1,51 @@
+---
+- name:
+  hosts: palo
+  connection: local
+  vars:
+    source_ips:
+      - 72.71.1.1
+      - 162.12.1.1
+    destination_ips:
+      - 165.12.3.2
+  tasks:
+    - name:
+      paloaltonetworks.panos.panos_security_rule:
+        action: allow
+        application:
+          - web-browsing
+        destination_ip: H-{{ destination_ips }}-32
+        destination_zone: ['any']
+        device_group: "AWS"
+        location: "top"
+        rule_name:
+        rulebase: post-rule
+        source_ip: "H-{{ source_ips }}-32"
+        source_zone: ['any']
+        state: present
+
+- name:
+  hosts: linux
+  connection: local
+  vars:
+    source_ips:
+      - 72.71.1.1
+      - 162.12.1.1
+  tasks:
+    - name: Allow HTTP and HTTPS from specific IP address
+      ansible.posix.firewalld:
+        service: http
+        source: "{{ item }}"
+        state: enabled
+        immediate: yes
+        permanent: yes
+        zone: public
+      become: yes
+      # when: "'your_ip_address' in ansible_all_ipv4_addresses"
+      loop: "{{ ssource_ips }}"
+
+    # - name: Drop all other incoming traffic
+    #   firewalld:
+    #     zone: public
+    #     state: blocked
+    #   become: yes
