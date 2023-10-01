@@ -1,0 +1,20 @@
+---
+- name:
+  hosts: switches
+  connection: ansible.netcommon.network_cli
+  tasks:
+    - name: configure vlans
+      cisco.ios.ios_vlans:
+        config:
+          name: web
+          vlan_id: 20
+        state: merged
+        when: ansible_network_os == "ios"
+
+    - name: configure vlans for vyos
+      vyos.vyos.vyos_vlan:
+        name: web
+        state: present
+        vlan_id: 20
+      when: ansible_network_os == "vyos"
+        
