@@ -1,0 +1,11 @@
+---
+- name:
+  hosts: routers
+  connection: ansible.netcommon.network_cli
+  tasks:
+    - name: configure basic ospf
+      cisco.ios.ios_config:
+        config:
+          parent: router ospf 10
+          lines:
+            - network 10.1.1.1 0.0.0.0 area 0 

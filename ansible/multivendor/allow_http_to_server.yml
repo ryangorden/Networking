@@ -23,6 +23,8 @@
         source_ip: "H-{{ source_ips }}-32"
         source_zone: ['any']
         state: present
+      tags:
+        - network
 
 - name:
   hosts: linux
@@ -43,6 +45,8 @@
       become: yes
       # when: "'your_ip_address' in ansible_all_ipv4_addresses"
       loop: "{{ ssource_ips }}"
+      tags:
+        - host_firewall
 
     # - name: Drop all other incoming traffic
     #   firewalld:

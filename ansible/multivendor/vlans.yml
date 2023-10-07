@@ -6,15 +6,17 @@
     - name: configure vlans
       cisco.ios.ios_vlans:
         config:
-          name: web
-          vlan_id: 20
+          name: "{{ item.name }}"
+          vlan_id: "{{ item.name }}"
         state: merged
         when: ansible_network_os == "ios"
+        loop: "{{ vlans }}"
 
     - name: configure vlans for vyos
       vyos.vyos.vyos_vlan:
-        name: web
+        name: "{{ item.name }}"
         state: present
-        vlan_id: 20
+        vlan_id: "{{ item.id }}"
       when: ansible_network_os == "vyos"
+      loop: "{{ vlans }}"
         

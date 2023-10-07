@@ -3,17 +3,17 @@
   become: yes # nick used true
   tasks:
   - name: "apt-get update"
-    apt:
+    ansible.builtin.apt:
       update_cache: yes
       cache_valid_time: 3600
 
   - name: "install nginx"
-    apt:
+    ansible.builtin.apt:
       name: ['nginx']
       state: latest
 
   - name: "create www directory"
-    file:
+    ansible.builtin.file:
       path: /var/www/{{ domain }}/html
       state: directory
       mode: '0775'
@@ -21,13 +21,13 @@
       group: "{{ ansible_user }}"
 
   - name: delete default nginx site
-    file:
+    ansible.builtin.file:
       path: /etc/nginx/sites-enabled/default
       state: absent
     notify: restart nginx
 
   - name: copy nginx site.conf
-    template:
+    ansble.builtin.template:
       src: site.conf.j2
       dest: /etc/nginx/sites-enabled/{{ domain }}
       owner: root
@@ -37,6 +37,6 @@
 
   handlers:
     - name: restart nginx
-      service:
+      ansible.builtin.service:
         name: nginx
         state: restarted

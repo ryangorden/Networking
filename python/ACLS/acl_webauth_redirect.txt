@@ -1,0 +1,9 @@
+ip access-list ext ACL-WEBAUTH-REDIRECT
+remark explictly deny DNS from being redirected to address a bug
+deny udp any any eq 53
+remark explictly deny DHCP from being redirected
+deny udp any any eq 67
+remark redirect all applicable traffic to ISE SERVERS
+permit tcp any any eq 80
+permit tcp any any eq 443
+remark all other traffic will be implicitly denied from the redirection

@@ -1,0 +1,23 @@
+---
+- name: Check and create a file if it doesn't exist
+  hosts: linux
+  gather_facts: no
+  tasks:
+    - name: Check if the file exists
+      ansible.builtin.stat:
+        path: /path/to/your/file.txt
+      register: file_info
+
+    - name: Display a message if the file exists
+      ansible.builtin.debug:
+        msg: "The file already exists on {{ inventory_hostname }}."
+
+      # Use when condition to check if the file exists
+      when: file_info.stat.exists
+
+    - name: Create the file if it doesn't exist
+      ansible.builtin.copy:
+        content: "This is the content of the file."
+        dest: /path/to/your/file.txt
+      # Use when condition to check if the file does not exist
+      when: not file_info.stat.exists
